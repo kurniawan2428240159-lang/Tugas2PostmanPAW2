@@ -1,0 +1,210 @@
+{
+  "info": {
+    "_postman_id": "3f5de472-ff47-4603-ba10-ea6e4be56649",
+    "name": "siswasmk3palembang",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58487788",
+    "_collection_link": "https://go.postman.co/collection/58487788-3f5de472-ff47-4603-ba10-ea6e4be56649?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Semua siswa",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/Siswasmk3palembang",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "Siswasmk3palembang"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Siswa",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\npm.test(\"Response has id, nama, and jurusan\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property('id');\r\n    pm.expect(jsonData).to.have.property('nama');\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "",
+            "value": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/siswasmk3palembang/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "siswasmk3palembang",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tambah Siswa",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 201 Created\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\npm.test(\"Response contains added student name\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property('nama');\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "kunci-rahasia-paw2"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nama\": \"Arif\",\r\n  \"jurusan\": \"Teknikmesin\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/siswasmk3palembang",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "siswasmk3palembang"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Siswa",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\npm.test(\"Response is an object\", function () {\r\n    var jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.be.an('object');\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{Api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 8,\r\n    \"nama\": \"Budi\",\r\n    \"jurusan\": \"TKJ\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/siswasmk3palembang/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "siswasmk3palembang",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Hapus Siswa",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 204 No Content\", function () {\r\n    pm.response.to.have.status(204);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{Api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/siswasmk3palembang/9",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "siswasmk3palembang",
+            "9"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
